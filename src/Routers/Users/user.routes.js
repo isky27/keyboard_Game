@@ -1,5 +1,5 @@
 const express = require("express");
-
+const randomWords = require('random-words');
 const UserModel = require("./user.model");
 
 const router = express.Router();
@@ -19,6 +19,15 @@ router.get('/info', async (req, res) => {
     try {
         const user = await UserModel.find();
         return res.status(200).send(user)    
+    } catch (error) {
+        return res.status(400).send("Something went wrong")
+    }
+})
+
+router.get('/generate', async (req,res)=>{
+    try {
+        let text = randomWords().toUpperCase();
+        return res.status(200).send(text)
     } catch (error) {
         return res.status(400).send("Something went wrong")
     }
