@@ -9,7 +9,7 @@ router.post('/', async(req,res)=>{
     try {
         const newUser = await UserModel.create({ name, level})
         newUser.save()
-        return res.status(201).send("User created successfully")
+        return res.status(201).send(newUser)
     } catch (error) {
         return res.status(400).send("Something went wrong")
     }
