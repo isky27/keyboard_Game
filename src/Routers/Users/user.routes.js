@@ -4,7 +4,7 @@ const UserModel = require("./user.model");
 
 const router = express.Router();
 
-router.post('/info', async(req,res)=>{
+router.post('/', async(req,res)=>{
     const {name,level} = req.body;  
     try {
         const newUser = await UserModel.create({ name, level})
